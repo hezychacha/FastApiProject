@@ -66,8 +66,14 @@ def create_posts(post:Post):
 #     print(id)
 #     return{"post_detail": f"Here is post {id}"}
 
+@app.get("/posts/latest")
+def get_latest_post():
+    post = my_posts[len(my_posts)-1]
+    return{"detail": post}
+
 @app.get("/posts/{id}")
 def get_posts(id: int):
     post = find_post(id)
     print(post)
     return{"post_detail": post}
+
